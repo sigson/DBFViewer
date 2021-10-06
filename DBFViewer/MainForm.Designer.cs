@@ -41,6 +41,9 @@ namespace DBFViewer
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EncodingName = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DBFDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DBFDataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -48,14 +51,15 @@ namespace DBFViewer
             // 
             // DBFDataGrid
             // 
-            this.DBFDataGrid.AutoGenerateColumns = false;
+            this.DBFDataGrid.AllowUserToAddRows = false;
+            this.DBFDataGrid.AllowUserToDeleteRows = false;
             this.DBFDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DBFDataGrid.DataSource = this.DBFDataSet;
-            this.DBFDataGrid.Location = new System.Drawing.Point(12, 31);
+            this.DBFDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DBFDataGrid.Location = new System.Drawing.Point(0, 28);
             this.DBFDataGrid.Name = "DBFDataGrid";
             this.DBFDataGrid.RowHeadersWidth = 51;
             this.DBFDataGrid.RowTemplate.Height = 24;
-            this.DBFDataGrid.Size = new System.Drawing.Size(776, 407);
+            this.DBFDataGrid.Size = new System.Drawing.Size(845, 458);
             this.DBFDataGrid.TabIndex = 0;
             // 
             // DBFDataSet
@@ -66,10 +70,11 @@ namespace DBFViewer
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(845, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,23 +112,61 @@ namespace DBFViewer
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveAsToolStripMenuItem.Text = "Save as";
+            this.saveAsToolStripMenuItem.Text = "Export to csv";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // EncodingName
+            // 
+            this.EncodingName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EncodingName.FormattingEnabled = true;
+            this.EncodingName.Items.AddRange(new object[] {
+            "CP1251(ansi cyrillic)",
+            "DOS",
+            "ASCII",
+            "utf-8",
+            "utf-16"});
+            this.EncodingName.Location = new System.Drawing.Point(697, 4);
+            this.EncodingName.Name = "EncodingName";
+            this.EncodingName.Size = new System.Drawing.Size(148, 24);
+            this.EncodingName.TabIndex = 3;
+            this.EncodingName.SelectedIndexChanged += new System.EventHandler(this.EncodingName_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label1.Location = new System.Drawing.Point(612, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Encoding";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(845, 486);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EncodingName);
             this.Controls.Add(this.DBFDataGrid);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -151,6 +194,9 @@ namespace DBFViewer
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ComboBox EncodingName;
+        private System.Windows.Forms.Label label1;
     }
 }
 
