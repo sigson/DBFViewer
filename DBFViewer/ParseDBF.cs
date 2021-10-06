@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -166,12 +167,12 @@ namespace DBFViewer
 						{
 							case 'N':  // Number
 									   // If you port this to .NET 2.0, use the Decimal.TryParse method
-								number = encoding.GetString(recReader.ReadBytes(field.fieldLen));
+								number = encoding.GetString(recReader.ReadBytes(field.fieldLen)).Trim();
 								if (IsNumber(number))
 								{
 									if (number.IndexOf(".") > -1)
 									{
-										row[fieldIndex] = decimal.Parse(number);
+										row[fieldIndex] = decimal.Parse(number, CultureInfo.InvariantCulture);
 									}
 									else
 									{
@@ -233,7 +234,7 @@ namespace DBFViewer
 								number = encoding.GetString(recReader.ReadBytes(field.fieldLen));
 								if (IsNumber(number))
 								{
-									row[fieldIndex] = double.Parse(number);
+									row[fieldIndex] = double.Parse(number, CultureInfo.InvariantCulture);
 								}
 								else
 								{

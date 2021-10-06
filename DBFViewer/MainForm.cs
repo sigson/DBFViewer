@@ -46,7 +46,7 @@ namespace DBFViewer
 
         private void EncodingName_SelectedIndexChanged(object sender, EventArgs e)
         {
-			try
+			//try
 			{
 				UsedEncoding = (EncodingName.Text == "utf-8" ? Encoding.UTF8 : UsedEncoding);
 				UsedEncoding = (EncodingName.Text == "ASCII" ? Encoding.ASCII : UsedEncoding);
@@ -56,9 +56,9 @@ namespace DBFViewer
 				DataTable dt = ParseDBF.ReadDBF(OpenedFile, UsedEncoding);
 				DBFDataGrid.DataSource = dt;
 			}
-			catch (Exception ex)
+			//catch (Exception ex)
 			{
-				MessageBox.Show(this, ex.Message + "\r\r" + ex.StackTrace, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				//MessageBox.Show(this, ex.Message + "\r\r" + ex.StackTrace, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
