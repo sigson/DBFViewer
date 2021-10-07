@@ -21,6 +21,7 @@ namespace DBFViewer
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dataSet);
+                //ds
             }
         }
     }
