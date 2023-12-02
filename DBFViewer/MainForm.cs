@@ -93,7 +93,7 @@ namespace DBFViewer
                             string[] outputCsv = new string[DBFDataGrid.Rows.Count + 1];
                             for (int i = 0; i < columnCount; i++)
                             {
-                                columnNames += "\"" + DBFDataGrid.Columns[i].HeaderText.ToString().Trim() + "\",";
+                                columnNames += "\"" + DBFDataGrid.Columns[i].HeaderText.ToString().Trim() + "\";";
                             }
                             outputCsv[0] += columnNames.Substring(0, columnNames.Length - 1);
 
@@ -101,7 +101,7 @@ namespace DBFViewer
                             {
                                 for (int j = 0; j < columnCount; j++)
                                 {
-                                    outputCsv[i] += "\"" + DBFDataGrid.Rows[i - 1].Cells[j].Value.ToString().Trim() + "\",";
+                                    outputCsv[i] += "\"" + DBFDataGrid.Rows[i - 1].Cells[j].Value.ToString().Trim() + "\";";
                                 }
                                 outputCsv[i] = outputCsv[i].Substring(0, outputCsv[i].Length - 1);
                             }
